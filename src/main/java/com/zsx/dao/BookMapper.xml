@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zsx.dao.BookMapper">
+
+    <insert id="addBook">
+        insert into books (bookID, bookName, bookCounts, detail) values (#{bookID},#{bookName},#{bookCounts},#{detail});
+    </insert>
+
+    <update id="upDateBook">
+        update books set bookName=#{bookName},
+                         bookID=#{bookID},
+                         bookCounts=#{bookCounts},
+                         detail=#{detail}
+        where bookID = #{bookID};
+    </update>
+
+    <delete id="deleteBookById">
+        delete from books where bookID = #{bookID};
+    </delete>
+    <select id="queryBooks" resultType="com.zsx.pojo.Books">
+        select * from books where bookID = #{bookID}
+    </select>
+    <select id="queryAllBooks" resultType="com.zsx.pojo.Books">
+        select * from books;
+    </select>
+</mapper>
